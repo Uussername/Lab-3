@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -27,7 +30,8 @@ public class Main {
 				Loop = false;
 			}
 			else {
-				System.out.println("please neter a valid program number");
+				System.out.println("Choose a program number6\n1) Passwords\n2) Word counter\n3) Phone numbers\n4) ID number generator\n5) Quit");
+				System.out.println("please enter a program number");
 				input = keyboard.nextInt();
 			}
 		}
@@ -57,7 +61,12 @@ public class Main {
 	{
 		System.out.println("word counter!\nenter a phrase\n");
 		String phrase = JOptionPane.showInputDialog("Throw in a sentence");
+		String[] seperated = phrase.split("\\ |,|;|\\.|\\?|!|-|_");
 		
+		List<String> list = new ArrayList<String>(Arrays.asList(seperated));
+		list.removeAll(Arrays.asList("", null));
+		
+		System.out.println(phrase +" is "+list.size() +" words long");
 	}
 	
 	
@@ -85,7 +94,14 @@ public class Main {
 	{
 		System.out.println("ID num maker\nenter a your full name and address.\n");
 		String name = JOptionPane.showInputDialog("Enter your name");
-		String address = JOptionPane.showInputDialog("Enter your address");	
+		String address = JOptionPane.showInputDialog("Enter your address");
+		String[] nameArray = name.split(" ");
+		String[] addressArray = address.split(" ");
+		String NameID = "";
+		for (int x=0; x < nameArray.length; x++) {
+			NameID= NameID + nameArray[x].substring(0, 1);
+		}
+		System.out.println("Your ID number is: " + NameID+addressArray[0]);
 	}
 }
 
